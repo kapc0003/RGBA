@@ -1,8 +1,8 @@
 package model;
 
-import java.util.Observable;
-
 import android.graphics.Color;
+
+import java.util.Observable;
 
 /**
  * The model holds the data.
@@ -13,7 +13,7 @@ import android.graphics.Color;
  * RGB: integer values in the domain range of 0 to 255 (inclusive).
  * Alpha: integer value in the domain range of 0 to 255 (inclusive).
  *
- * @author Gerald.Hurdle@AlgonquinCollege.com
+ * @author Alison Kapcala (kapc0003)
  * @version 1.0
  */
 public class RGBAModel extends Observable {
@@ -74,7 +74,7 @@ public class RGBAModel extends Observable {
     public Integer getRed()   { return red; }
 
     // SETTERS
-    public void setAlpha( Integer alpha ) {
+    public void setAlpha( Integer alpha ) { //Validation
         this.alpha = alpha;
 
         this.updateObservers();
@@ -110,8 +110,9 @@ public class RGBAModel extends Observable {
     // the model has changed!
     // broadcast the update method to all registered observers
     private void updateObservers() {
-        this.setChanged();
-        this.notifyObservers();
+        this.setChanged();      //sets the dirty flag on the data
+        this.notifyObservers(); //broadcasts to all listeners
+        //these two methods come from the Observable class
     }
 
     @Override
